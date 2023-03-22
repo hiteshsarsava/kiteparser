@@ -42,6 +42,7 @@ class _MyAppState extends State<MyApp>
     super.initState();
     kiteTicker.setUpSocket(
         'your api key', 'your access token got from login', this);
+    kiteTicker.addDataListener('home', this);
   }
 
   @override
