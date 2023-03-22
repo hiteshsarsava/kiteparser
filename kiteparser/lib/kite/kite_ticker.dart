@@ -3,6 +3,7 @@ library kiteparser;
 import 'dart:collection';
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:flutter/foundation.dart';
 import 'package:web_socket_channel/io.dart';
 import 'Depth.dart';
 import 'Tick.dart';
@@ -35,12 +36,16 @@ class KiteTicker {
             setUpLatestList(tickList);
           }
         }, onError: (error) {
-          print("ERROR $error");
+          if (kDebugMode) {
+            print("ERROR $error");
+          }
           connectionListener.onError(error);
         });
       }
     }).onError((error, stackTrace) {
-      print("ERROR $error");
+      if (kDebugMode) {
+        print("ERROR $error");
+      }
       connectionListener.onError(error.toString());
     });
   }
