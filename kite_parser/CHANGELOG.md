@@ -13,3 +13,7 @@
 ## 0.0.4
 
 * Added example.
+
+## 0.0.5
+
+* Added code comments.

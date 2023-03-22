@@ -1,6 +1,6 @@
 name: kiteparser
 description: A Helper Utility for parsing the web socket from octet stream model.
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/hiteshsarsava/kiteparser
 repository: https://github.com/hiteshsarsava/kiteparser
 issue_tracker: https://github.com/hiteshsarsava/kiteparser/issues
