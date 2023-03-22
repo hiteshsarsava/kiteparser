@@ -3,6 +3,7 @@ library kiteparser;
 import 'dart:collection';
 import 'dart:io';
 import 'dart:typed_data';
+
 import 'package:flutter/foundation.dart';
 import 'package:kiteparser/kite/depth.dart';
 import 'package:kiteparser/kite/tick.dart';
@@ -160,6 +161,7 @@ class KiteTicker {
     return tick2;
   }
 
+  ///Validate date of last updated tick
   bool _isValidDate(int date) {
     if (date <= 0) {
       return false;
@@ -209,10 +211,10 @@ class KiteTicker {
     for (int k = 0; k < 10; ++k) {
       int s = k * 12;
       Depth depth = Depth();
-      depth
-          .setQuantity(_convertToDouble(_getBytes(depthBytes, s, s + 4)).toInt());
-      depth.setPrice(
-          _convertToDouble(_getBytes(depthBytes, s + 4, s + 8)) / dec.toDouble());
+      depth.setQuantity(
+          _convertToDouble(_getBytes(depthBytes, s, s + 4)).toInt());
+      depth.setPrice(_convertToDouble(_getBytes(depthBytes, s + 4, s + 8)) /
+          dec.toDouble());
       depth.setOrders(
           _convertToDouble(_getBytes(depthBytes, s + 8, s + 10)).toInt());
       if (k < 5) {
@@ -277,8 +279,10 @@ class KiteTicker {
     tick.setLastTradedPrice(lastTradedPrice);
     tick.setHighPrice(_convertToDouble(_getBytes(bin, 8, 12)) / dec.toDouble());
     tick.setLowPrice(_convertToDouble(_getBytes(bin, 12, 16)) / dec.toDouble());
-    tick.setOpenPrice(_convertToDouble(_getBytes(bin, 16, 20)) / dec.toDouble());
-    double closePrice = _convertToDouble(_getBytes(bin, 20, 24)) / dec.toDouble();
+    tick.setOpenPrice(
+        _convertToDouble(_getBytes(bin, 16, 20)) / dec.toDouble());
+    double closePrice =
+        _convertToDouble(_getBytes(bin, 20, 24)) / dec.toDouble();
     tick.setClosePrice(closePrice);
     _setChangeForTick(tick, lastTradedPrice, closePrice);
     if (bin.length > 28) {
@@ -308,6 +312,7 @@ class KiteTicker {
   }
 }
 
+///Listener for Socket connection
 abstract class SocketConnectionListener {
   ///This is callback when websocket connection is successful
   void onConnected(IOWebSocketChannel client);
@@ -316,6 +321,7 @@ abstract class SocketConnectionListener {
   void onError(String error);
 }
 
+/// Listener for data listener
 abstract class OnDataListener {
   ///This is callback when start getting the real time data from socket
   void onData(List<Tick> list);

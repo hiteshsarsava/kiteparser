@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:kiteparser/kite/depth.dart';
+
 /// mode : ""
 /// tradable : true
 /// token : 5465466546465
@@ -21,8 +22,10 @@ import 'package:kiteparser/kite/depth.dart';
 /// openInterestDayLow : 13.132
 /// tickTimestamp : ""
 
+///Decode Tick json
 Tick tickFromJson(String str) => Tick.fromJson(json.decode(str));
 
+///Encode Tick json
 String tickToJson(Tick data) => json.encode(data.toJson());
 
 class Tick {
@@ -69,6 +72,7 @@ class Tick {
     _depth = depth;
   }
 
+  ///Decode Tick json
   Tick.fromJson(dynamic json) {
     _mode = json['mode'];
     _tradable = json['tradable'];
@@ -153,6 +157,7 @@ class Tick {
 
   Map<String, List<Depth>>? get depth => _depth;
 
+  ///Encode Tick json
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['mode'] = _mode;
@@ -178,63 +183,78 @@ class Tick {
     return map;
   }
 
+  ///Setter for _change
   void setNetPriceChangeFromClosingPrice(double d) {
     _change = d;
   }
 
+  ///Setter for _lastTradedTime
   void setLastTradedTime(DateTime? dateTime) {
     _lastTradedTime = dateTime;
   }
 
+  ///Setter for _oi
   void setOi(double convertToDouble) {
     _oi = convertToDouble;
   }
 
+  ///Setter for _openInterestDayHigh
   void setOpenInterestDayHigh(double convertToDouble) {
     _openInterestDayHigh = convertToDouble;
   }
 
+  ///Setter for _openInterestDayLow
   void setOpenInterestDayLow(double convertToDouble) {
     _openInterestDayLow = convertToDouble;
   }
 
+  ///Setter for _tickTimestamp
   void setTickTimestamp(DateTime? dateTime) {
     _tickTimestamp = dateTime;
   }
 
+  ///Setter for _depth
   void setMarketDepth(Map<String, List<Depth>>? depthData) {
     _depth = depthData;
   }
 
+  ///Setter for _mode
   void setMode(String modeFull) {
     _mode = modeFull;
   }
 
+  ///Setter for _tradable
   void setTradable(bool tradable) {
     _tradable = tradable;
   }
 
+  ///Setter for _token
   void setInstrumentToken(int int) {
     _token = int;
   }
 
+  ///Setter for _lastTradedPrice
   void setLastTradedPrice(double lastTradedPrice) {
     _lastTradedPrice = lastTradedPrice;
   }
 
+  ///Setter for _highPrice
   void setHighPrice(double d) {
     _highPrice = d;
   }
 
+  ///Setter for _lowPrice
   void setLowPrice(double d) {
     _lowPrice = d;
   }
 
+  ///Setter for _openPrice
   void setOpenPrice(double d) {
     _openPrice = d;
   }
 
+  ///Setter for _closePrice
   void setClosePrice(double closePrice) {
-    _closePrice = _closePrice;
+    _closePrice = closePrice;
   }
 }

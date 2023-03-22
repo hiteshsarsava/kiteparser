@@ -4,10 +4,13 @@ import 'dart:convert';
 /// price : 132
 /// orders : 123
 
+///Used to decode Depth json
 Depth depthFromJson(String str) => Depth.fromJson(json.decode(str));
 
+///Encode Depth json
 String depthToJson(Depth data) => json.encode(data.toJson());
 
+///Model class for Depth class
 class Depth {
   Depth({
     num? quantity,
@@ -19,6 +22,7 @@ class Depth {
     _orders = orders;
   }
 
+  ///Used to decode Depth json
   Depth.fromJson(dynamic json) {
     _quantity = json['quantity'];
     _price = json['price'];
@@ -29,6 +33,7 @@ class Depth {
   num? _price;
   num? _orders;
 
+  ///Clone new Depth object
   Depth copyWith({
     num? quantity,
     num? price,
@@ -46,6 +51,7 @@ class Depth {
 
   num? get orders => _orders;
 
+  ///Encode Depth json
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['quantity'] = _quantity;
@@ -54,14 +60,17 @@ class Depth {
     return map;
   }
 
+  ///Setter for quantity
   void setQuantity(int int) {
     _quantity = int;
   }
 
+  ///Setter for price
   void setPrice(double d) {
     _price = d;
   }
 
+  ///Setter for order
   void setOrders(int int) {
     _orders = int;
   }
