@@ -9,3 +9,7 @@
 ## 0.0.3
 
 * Added documentations.
+
+## 0.0.4
+
+* Added example.
