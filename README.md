@@ -15,7 +15,7 @@ Add as dependency in pubspec.yaml file
 dependencies:
   flutter:
     sdk: flutter
-  kiteparser: ^0.0.1
+  kiteparser: ^0.0.4
 ```
 
 ```dart
@@ -42,6 +42,7 @@ class _MyAppState extends State<MyApp>
     super.initState();
     kiteTicker.setUpSocket(
         'your api key', 'your access token got from login', this);
+    kiteTicker.addDataListener('home', this);
   }
 
   @override
