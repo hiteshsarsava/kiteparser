@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:kiteparser/kite/Depth.dart';
-
+import 'package:kiteparser/kite/depth.dart';
 /// mode : ""
 /// tradable : true
 /// token : 5465466546465

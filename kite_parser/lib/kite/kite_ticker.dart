@@ -4,10 +4,11 @@ import 'dart:collection';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
+import 'package:kiteparser/kite/depth.dart';
+import 'package:kiteparser/kite/tick.dart';
 import 'package:web_socket_channel/io.dart';
-import 'Depth.dart';
-import 'Tick.dart';
-export 'Tick.dart';
+
+export 'tick.dart';
 
 class KiteTicker {
   static String modeLTP = "ltp";

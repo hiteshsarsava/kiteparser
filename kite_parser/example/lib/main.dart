@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kiteparser/kite/kite_ticker.dart';
 import 'package:web_socket_channel/io.dart';
@@ -24,6 +25,7 @@ class _MyAppState extends State<MyApp>
     super.initState();
     kiteTicker.setUpSocket(
         'your api key', 'your access token got from login', this);
+    kiteTicker.addDataListener('home', this);
   }
 
   @override
@@ -52,11 +54,15 @@ class _MyAppState extends State<MyApp>
 
   @override
   void onData(List<Tick> list) {
-    print(list);
+    if (kDebugMode) {
+      print(list);
+    }
   }
 
   @override
   void onError(String error) {
-    print(error);
+    if (kDebugMode) {
+      print(error);
+    }
   }
 }
